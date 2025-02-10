@@ -1,0 +1,29 @@
+Overview:- Adapter Design Pattern
+
+The Adapter Pattern is a structural design pattern that enables classes with incompatible interfaces to work together. The key components are:
+   1: Target Interface: The interface that the client expects.
+   2: Client: The code that uses the target interface.
+   3: Adaptee: The existing class that has an incompatible interface (in our example, a class that returns XML stock data).
+   4: Adapter: The class that implements the target interface and internally converts calls to the adaptee’s interface (for example, converting XML to JSON).
+Note: ** This pattern is particularly useful when integrating legacy or third-party code with new systems.
+
+Mentioned an implementation java code example :- Converting Stock Data (XML to JSON)
+
+In this example, imagine you have a legacy system that provides stock data in XML format. Modern analytics tools, however, require JSON. We will build:
+
+    The Target Interface (StockDataJSON) – Declares the method that returns stock data in JSON format.
+    The Adaptee (XMLStockData) – Provides stock data in XML.
+    The Adapter (StockDataAdapter) – Wraps an instance of XMLStockData and converts its output to JSON.
+    The Client (AdapterPatternDemo) – Uses the adapter to get the converted data.
+    
+Detailed Explanation
+
+Target Interface (StockDataJSON):
+The client expects an object that can provide stock data in JSON format. The interface defines a single method getStockDataAsJSON().
+Adaptee (XMLStockData):
+This is the legacy component that only provides the stock data as an XML string. The method getStockDataAsXML() simulates fetching data in XML format.
+Adapter (StockDataAdapter):
+This class implements the target interface and wraps an instance of XMLStockData. Inside getStockDataAsJSON(), it calls the adaptee’s method to get the XML data and then converts that data to JSON. 
+Note: The conversion here is simplified using regular expressions. In real-world applications, you’d likely use libraries like JAXB (for XML parsing) and org.json or Gson (for JSON creation).
+Client (AdapterPatternDemo):
+The client remains unaware of the underlying XML format. It simply works with an object implementing the StockDataJSON interface, demonstrating the decoupling enabled by the adapter pattern.
