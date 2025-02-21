@@ -1,0 +1,29 @@
+The Composite Design Pattern is a structural design pattern that allows you to treat individual objects (leaves) and compositions of objects (composites) uniformly. This pattern is especially useful for representing part-whole hierarchies, where clients can interact with single objects and groups of objects through a common interface.
+
+Key Benefits
+
+    Uniformity: Clients can treat simple and complex elements the same way.
+    Flexibility: New types of components can be added without changing the client code.
+    Ease of Use: Facilitates operations that can be performed recursively over the entire structure.
+
+Components of the Composite Pattern
+
+    Component (Abstract Interface or Class):
+    Declares the common interface for both simple and composite objects. It often defines operations like operation(), which must be implemented by both leaves and composites.
+
+    Leaf (Simple Element):
+    Represents end objects in the composition that do not have children. For example, in a file system, a file is a leaf.
+
+    Composite (Complex Element):
+    Defines behavior for components having children. It stores child components and implements operations such as adding or removing children. In our file system analogy, a directory is a composite that can contain files or other directories.
+
+
+
+
+Code Explanation
+
+    FileSystemComponent: An interface defining the common operation display(String indent) used by both files and directories.
+    File (Leaf): Implements the display method to output file-specific details.
+    Directory (Composite): Maintains a list of FileSystemComponent objects and implements methods to add, remove, and display its children recursively.
+    CompositePatternDemo: Demonstrates building a file system hierarchy where a root directory contains two subdirectories, each with files. Calling display("") on the root recursively prints the entire structure with proper indentation.
+
